@@ -8,7 +8,6 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // Insight struct holds data id and insight id
@@ -21,15 +20,16 @@ var collectionName string = "insights"
 var collection = DatabaseClient.Database(configuration.Config.DatabaseName).Collection(collectionName)
 
 //InsertOne : inserts new insight
-func InsertOne(dataID string) (*mongo.InsertOneResult, error) {
+func InsertOne(dataID string) (string, error) {
 	insight := Insight{DataID: dataID}
 	insertResult, err := collection.InsertOne(context.TODO(), insight)
 	if err != nil {
 		log.Fatal(err)
-		return nil, err
+		return "", err
 	}
+	oid := insertResult.InsertedID.(primitive.ObjectID)
 	fmt.Println("Inserted a single document: ", insertResult.InsertedID)
-	return insertResult, nil
+	return oid.String(), nil
 }
 
 // FindOne : finds and returns one insight with the id given

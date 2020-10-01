@@ -1,19 +1,21 @@
 package configuration
 
-import()
-
-type Configuration struct{
+// Configuration holder
+type Configuration struct {
 	DatabaseName string
-	DatabaseURL string
+	DatabaseURL  string
+	HTTPPort     string
 }
 
+// Config object
 var (
 	Config Configuration
 )
 
-func initConfig()  {
+func initConfig() {
 	Config = Configuration{
-		DatabaseName : "alvarium-db",
-		DatabaseURL : "mongodb://localhost:27017", 
+		DatabaseName: "alvarium-db",
+		DatabaseURL:  "mongodb://localhost:27017",
+		HTTPPort:     "9090",
 	}
 }

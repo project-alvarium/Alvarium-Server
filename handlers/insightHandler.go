@@ -1,34 +1,28 @@
 package handlers
 
 import (
-	"database-manager/configuration"
-	"errors"
-	"regexp"
-	"database-manager/api"
+	"database-manager/api/models"
 	"database-manager/collections"
 )
 
+// InsightHandler is astuct to export the struct
 type InsightHandler struct {
 }
-var (
-	UserCodeServerUrl string
-)
-const (
-	/*valid url example: http://localhost:9496/api/handleMessage */
-	urlRegex string = "^((https)|(http))(:\\/\\/((localhost)|(127.0.0.1)):([0-9]{1,5})(\\/))([a-zA-Z0-9]+([\\-\\.\\/]{1}[a-zA-Z0-9]+)*?)$"
-)
-func (insightHandler *InsightHandler) CreateInsight(data api.Data) (string, error) {
-	collections.InsertOne(data.DataID)
-	if match {
-		config := configuration.Config
-		UserCodeServerUrl = registerRequestModel.FullUrl
-		orchestratorClient := clients.OrchestratorClient{Host: config.OrchestratorHost, Port: config.OrchestratorPort}
-		err := orchestratorClient.Register()
-		if err != nil {
-			return "", errors.New("Registration Failed.")
-		}
-		return "successfully registered user code server: " + UserCodeServerUrl, nil
+
+// CreateInsight creates an insight
+func CreateInsight(data models.Data) (string, error) {
+	res, err := collections.InsertOne(data.DataID)
+	if err != nil {
+		return "", err
 	}
-	return "", errors.New("invalid user code server format " + registerRequestModel.FullUrl)
+	return res, nil
 }
 
+// GetInsight gets an insight from the db by id
+func GetInsight(insightID string) (*collections.Insight, error) {
+	res, err := collections.FindOne(insightID)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
