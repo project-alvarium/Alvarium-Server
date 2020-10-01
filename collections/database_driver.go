@@ -1,7 +1,8 @@
 package collections
 
 import(
-    "fmt"
+	"context"
+	"fmt"
 	"log"
 	"database-manager/configuration"
 
@@ -9,19 +10,18 @@ import(
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-Client DatabaseClient
+var DatabaseClient mongo.Client
 
 func Database() {
 	// Set client options
-	clientOptions := options.Client().ApplyURI(configuration.Config.DatabaseUrl)
+	clientOptions := options.Client().ApplyURI(configuration.Config.DatabaseURL)
 	// Connect to MongoDB
-	client, err := mongo.Connect(context.TODO(), clientOptions)
-	DatabaseClient := client
+	DatabaseClient, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
 	// Check the connection
-	err = client.Ping(context.TODO(), nil)
+	err = DatabaseClient.Ping(context.TODO(), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
