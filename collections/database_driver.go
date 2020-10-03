@@ -23,12 +23,13 @@ func Database() {
 	// Set client options
 	clientOptions := options.Client().ApplyURI(configuration.Config.DatabaseURL)
 	// Connect to MongoDB
-	DatabaseClient, err := mongo.Connect(context.TODO(), clientOptions)
+	DatabaseClient1, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
+	DatabaseClient = *DatabaseClient1
 	// Check the connection
-	err = DatabaseClient.Ping(context.TODO(), nil)
+	err = DatabaseClient1.Ping(context.TODO(), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
