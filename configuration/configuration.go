@@ -12,7 +12,7 @@ var (
 	Config Configuration
 )
 
-func initConfig() {
+func InitConfig() {
 	Config = Configuration{
 		DatabaseName: "alvarium-db",
 		DatabaseURL:  "mongodb://localhost:27017",
