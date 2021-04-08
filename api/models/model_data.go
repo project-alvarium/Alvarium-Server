@@ -11,5 +11,13 @@ package models
 
 // Data model
 type Data struct {
-	DataID string `json:"dataID,omitempty"`
+	DataID string
+	content Content
+	Score int64
 }
+type Content struct {
+        Name string
+    	Body string
+    	Time int64
+}
+

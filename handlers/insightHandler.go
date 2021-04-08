@@ -9,6 +9,22 @@ import (
 type InsightHandler struct {
 }
 
+func CreateContent(data models.Data) (string, error) {
+	res, err := collections.InsertContent(data.DataID)
+	if err != nil {
+		return "", err
+	}
+	return res, nil
+}
+// TODO : return data
+func GetContent(insightID string) (string, error) {
+	res, err := collections.FindContent(insightID)
+	if err != nil {
+		return "", err
+	}
+	return res, nil
+}
+
 // CreateInsight creates an insight
 func CreateInsight(data models.Data) (string, error) {
 	res, err := collections.InsertOne(data.DataID)

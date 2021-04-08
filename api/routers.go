@@ -12,7 +12,6 @@ package api
 import (
 	"net/http"
 	"strings"
-
 	"github.com/gorilla/mux"
 )
 
@@ -59,5 +58,17 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/api/insights/{id}",
 		GetInsightByID,
+	},
+	Route{
+		"addContent",
+		strings.ToUpper("Post"),
+		"/api/data",
+		addContent,
+	},
+	Route{
+		"getContent",
+		strings.ToUpper("Get"),
+		"/api/data/{id}",
+		getContent,
 	},
 }

@@ -15,11 +15,46 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"fmt"
 
 	"github.com/gorilla/mux"
 )
 
 // AddInsight adds insight to db and returns response to user
+func addContent(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	body, err := ioutil.ReadAll(r.Body)
+	var data models.Data
+	json.Unmarshal([]byte(body), &data)
+	fmt.Println(data)
+	if err != nil {
+		json.NewEncoder(w).Encode(models.Response{Code: 400, Message: err.Error()})
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	res, err := handlers.CreateContent(data)
+	if err != nil {
+		json.NewEncoder(w).Encode(models.Response{Code: 400, Message: err.Error()})
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(models.Response{Code: 200, Message: res})
+	w.WriteHeader(http.StatusOK)
+	return
+}
+func getContent(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	vars := mux.Vars(r)
+	res, err := handlers.GetContent(vars["id"])
+	if err != nil {
+		json.NewEncoder(w).Encode(models.Response{Code: 400, Message: err.Error()})
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(models.Response{Code: 200, Message: res})
+	return
+}
 func AddInsight(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	body, err := ioutil.ReadAll(r.Body)
