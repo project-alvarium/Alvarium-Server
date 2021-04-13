@@ -60,15 +60,15 @@ var routes = Routes{
 		GetInsightByID,
 	},
 	Route{
-		"addContent",
+		"AddContent",
 		strings.ToUpper("Post"),
 		"/api/data",
-		addContent,
+		AddContent,
 	},
 	Route{
-		"getContent",
+		"GetContent",
 		strings.ToUpper("Get"),
 		"/api/data/{id}",
-		getContent,
+		GetContent,
 	},
 }

@@ -18,12 +18,7 @@ type Insight struct {
 
 var collectionName string = "insights"
 
-func InsertContent(dataID string) (string, error) {
-	return "ok", nil
-}
-func FindContent(dataID string) (string, error) {
-	return "ok", nil
-}
+
 //InsertOne : inserts new insight
 func InsertOne(dataID string) (string, error) {
 	var collection = DatabaseClient.Database(configuration.Config.DatabaseName).Collection(collectionName)
