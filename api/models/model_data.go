@@ -12,12 +12,5 @@ package models
 // Data model
 type Data struct {
 	DataID string
-	content Content
-	Score int64
+	Content string
 }
-type Content struct {
-        Name string
-    	Body string
-    	Time int64
-}
-

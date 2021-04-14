@@ -19,14 +19,18 @@ import (
 
 	"github.com/gorilla/mux"
 )
-
-// AddInsight adds insight to db and returns response to user
-func addContent(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	body, err := ioutil.ReadAll(r.Body)
+func fromJsontoData (body []byte) models.Data{
 	var data models.Data
 	json.Unmarshal([]byte(body), &data)
-	fmt.Println(data)
+	fmt.Println("DataID:", data.DataID)
+	fmt.Println("Data Content:", data.Content)
+	return data
+}
+// AddInsight adds insight to db and returns response to user
+func AddContent(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	body, err := ioutil.ReadAll(r.Body)
+	data := fromJsontoData(body)
 	if err != nil {
 		json.NewEncoder(w).Encode(models.Response{Code: 400, Message: err.Error()})
 		w.WriteHeader(http.StatusBadRequest)
@@ -42,7 +46,7 @@ func addContent(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	return
 }
-func getContent(w http.ResponseWriter, r *http.Request) {
+func GetContent(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	vars := mux.Vars(r)
 	res, err := handlers.GetContent(vars["id"])
