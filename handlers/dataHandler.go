@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"database-manager/api/models"
-	"database-manager/subscriber"
-	 "database-manager/annotator"
+	"github.com/project-alvarium/Alvarium-Server/annotator"
+	"github.com/project-alvarium/Alvarium-Server/api/models"
+	"github.com/project-alvarium/Alvarium-Server/subscriber"
 )
 
 func CreateContent(data models.Data) (string, error) {

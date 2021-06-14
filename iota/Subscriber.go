@@ -9,7 +9,7 @@ import "C"
 import (
 	"bytes"
 	"fmt"
-	"database-manager/configuration"
+	"github.com/project-alvarium/Alvarium-Server/configuration"
 	"net/http"
 	"time"
 )

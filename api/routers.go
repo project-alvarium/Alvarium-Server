@@ -10,9 +10,9 @@
 package api
 
 import (
+	"github.com/gorilla/mux"
 	"net/http"
 	"strings"
-	"github.com/gorilla/mux"
 )
 
 // Route holds info of routes

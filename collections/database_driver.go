@@ -7,8 +7,8 @@ package collections
 
 import (
 	"context"
-	"database-manager/configuration"
 	"fmt"
+	"github.com/project-alvarium/Alvarium-Server/configuration"
 	"log"
 
 	"go.mongodb.org/mongo-driver/mongo"

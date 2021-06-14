@@ -8,11 +8,11 @@ package main
 */
 import "C"
 import (
-	"database-manager/api"
-	"database-manager/collections"
-	"database-manager/configuration"
-	"database-manager/subscriber"
 	"fmt"
+	"github.com/project-alvarium/Alvarium-Server/api"
+	"github.com/project-alvarium/Alvarium-Server/collections"
+	"github.com/project-alvarium/Alvarium-Server/configuration"
+	"github.com/project-alvarium/Alvarium-Server/subscriber"
 	"log"
 	"net/http"
 	"time"
