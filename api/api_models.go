@@ -10,12 +10,12 @@
 package api
 
 import (
-	"database-manager/api/models"
-	"database-manager/handlers"
 	"encoding/json"
+	"fmt"
+	"github.com/project-alvarium/Alvarium-Server/api/models"
+	"github.com/project-alvarium/Alvarium-Server/handlers"
 	"io/ioutil"
 	"net/http"
-	"fmt"
 
 	"github.com/gorilla/mux"
 )

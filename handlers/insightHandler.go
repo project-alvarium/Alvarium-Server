@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"database-manager/api/models"
-	"database-manager/collections"
+	"github.com/project-alvarium/Alvarium-Server/api/models"
+	"github.com/project-alvarium/Alvarium-Server/collections"
 )
 
 // InsightHandler is astuct to export the struct

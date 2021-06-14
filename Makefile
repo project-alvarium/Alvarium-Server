@@ -7,7 +7,7 @@ clean:
 	rm ./database-manager
 
 run:
-	cd bin && ./launch.sh
+	./database-manager
 
 test:
 	go test -coverprofile=coverage.out ./...

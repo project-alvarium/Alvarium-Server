@@ -1,12 +1,12 @@
 package subscriber
 import (
-	"database-manager/iota"
-	"database-manager/configuration"
 	"fmt"
+	"github.com/project-alvarium/Alvarium-Server/configuration"
+	"github.com/project-alvarium/Alvarium-Server/iota"
 	"os"
 	"os/signal"
 	"syscall"
-);
+)
 
 // Global instance for ann subscriber and array of subscriber to drop on shutdown
 var Subs []iota.Subscriber

@@ -1,7 +1,7 @@
 package annotator
 import (
-	"database-manager/iota"
-	"database-manager/api/models"
+	"github.com/project-alvarium/Alvarium-Server/api/models"
+	"github.com/project-alvarium/Alvarium-Server/iota"
 );
 type Annotator struct {
 	sub iota.Subscriber
